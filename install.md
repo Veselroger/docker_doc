@@ -8,6 +8,7 @@
 - [Docker installation](#docker)
 - [Docker Client (Windows)](#cli)
 - [First Run](#first)
+- [Docker in Google Cloud](#cloud)
 
 
 ## [↑](#home) <a id="wsl2"></a> Enable WSL2
@@ -315,3 +316,42 @@ Windows хост имеет доступ к приложению, которое
 Удалить остановленные контейнеры можно при помощи команды ``docker container prune``.
 
 Если сервер через localhost недоступен стоит обратить внимание на такую проблему: **"[Local sites running in WSL2 not accessible in browser](https://github.com/microsoft/WSL/issues/5298)"**.
+
+----
+
+## [↑](#home) <a id="cloud"></a> Docker in Google Cloud
+В случае необходимости (например, для учебных целей), можно развернуть докер в облаке.
+
+Облачные провайдеры (такие как Oracle, Azure, Amazon и Google) предоставляют различные условия и стоимость своих услуг.\
+Далее будет рассмотрен вариант с Google Cloud, т.к. на нём доступно бесплатно разворачивание одной небольшой машины для учебных целей.
+
+Для начала, ознакомимся с текущими ограничениями Google Cloud Platform.\
+Нас интересует секция **"[Google Cloud Features: Compute](https://cloud.google.com/free/docs/free-cloud-features#compute)"**.\
+Более подробно про то, как это читать см в ролике **"[How To Get A Free Cloud Server](https://www.youtube.com/watch?v=KK9rMPgYw4U)"**
+
+В случае проблем с регистрацией аккаунта (например, в Сербии недоступен план Individual) можно выбрать другую страну (например, Черногорию).\
+В этом случае индекс и адрес при регистрации можно взять у любого почтового отделения с гугл карт.
+
+В левом верхнем углу доступно меню, при помощи которого мы можем выполнять действия в нашем личном облаке.
+
+Для начала, выберем в меню пункт **"Billing"**.\
+В списке увидим один биллинг аккаунт (например, "My Billing Account"). Откроем его.\
+В верхней части страницы нажмём кнопку **"Manage billing account"**.\
+После чего появится кнопка **"Rename Billing Account"**. Нажмём на неё и выберем новое имя.\
+Например: **"GCP Free Tier"**.
+
+Выберем в меню в секции **"Compute Engine"** пункт **"VM Instances"**.\
+В самый первый раз нужно нажать кнопку **"Enable"**.
+Нас попросят связать Compute Engine с биллинг аккаунтом.
+Выберем наш GCP Free Tier биллинг аккаунт.
+После этого нужно будет подождать, когда Compute Engine активируется для нашего аккаунта.
+
+После активации наверху появится кнопку **"Create instance"**. Нажмём её.\
+Далее нам нужно установить параметры нашего instance согласно Free Tier политик.\
+Сайт с политиками: [Google Cloud Features: Compute](https://cloud.google.com/free/docs/free-cloud-features#compute).\
+Настройки можно сверить ещё раз с видео от **"[Tech Hub TV](https://www.youtube.com/watch?v=KK9rMPgYw4U)"**.
+
+Когда в списке VM появится машина, то мы можем кликнуть по **"SSH"** и тогда мы подключимся к машине.\
+Например, мы можем поставить туда докер согласно документации: https://docs.docker.com/engine/install/debian/#install-using-the-repository
+
+К функциям Google Cloud можно переходить через страницу **"[Google Cloud Cosole](https://console.cloud.google.com/)"**.
